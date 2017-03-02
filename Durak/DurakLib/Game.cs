@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ch13CardLib;
 
 namespace DurakGameLib
 {
@@ -17,12 +18,36 @@ namespace DurakGameLib
         #endregion
 
         #region INSTANCE MEMBERS
-        private List<Player> Players;
+        private Dictionary<string, Player> players;
+        private Deck gameDeck;
         #endregion
 
         #region METHODS
-        public void PlayNextRound() { }
-        public void StartGame() { }
+        /// <summary>
+        /// Commence the next round of the current game
+        /// </summary>
+        public void PlayNextRound() {  }
+
+        /// <summary>
+        /// Start the current game, string should be validated in the GUI
+        /// </summary>
+        public void StartGame(string playerName)
+        {
+            //// Initialize Players
+            players.Add("Human", new Player(playerName));
+            players.Add("Computer", new Player("Computer"));            
+
+            //// Initializae Deck
+
+            //// Decide which player goes first
+
+
+
+        }
+
+        /// <summary>
+        /// End the current game
+        /// </summary>
         public void EndGame() { }
         #endregion
     }

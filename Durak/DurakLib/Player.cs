@@ -18,6 +18,8 @@ namespace DurakGameLib
         private string playerName;          // The players name
         private Cards playerHand;           // The players cards as a hand
         private bool isDurak;               // IS PLAYER THE DURAK?
+        private int gamesWon;
+        private int handsWon; 
 
         #endregion
 
@@ -26,7 +28,19 @@ namespace DurakGameLib
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public Player() { }
+        public Player()
+        { 
+            // TODO 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="playerName"></param>
+        public Player(string playerName)
+        {
+            // TODO
+        }
 
         #endregion
 
