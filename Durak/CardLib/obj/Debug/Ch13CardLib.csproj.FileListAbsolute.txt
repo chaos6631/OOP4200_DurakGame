@@ -1,0 +1,5 @@
+D:\School\C# Programming Projects\CalderTutorial7\Ch11CardLib\bin\Debug\Ch11CardLib.dll
+D:\School\C# Programming Projects\CalderTutorial7\Ch11CardLib\bin\Debug\Ch11CardLib.pdb
+D:\School\C# Programming Projects\CalderTutorial7\Ch11CardLib\obj\Debug\Ch11CardLib.dll
+D:\School\C# Programming Projects\CalderTutorial7\Ch11CardLib\obj\Debug\Ch11CardLib.pdb
+D:\School\C# Programming Projects\CalderTutorial7\Ch11CardLib\obj\Debug\Ch13CardLib.csprojResolveAssemblyReference.cache
