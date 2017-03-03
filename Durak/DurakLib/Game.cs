@@ -10,7 +10,9 @@ namespace DurakGameLib
     class Game
     {
         #region CLASS MEMBERS
-
+        // Max players
+        // Min players
+        // Deck sizes
         #endregion
 
         #region CONSTRUCTORS
