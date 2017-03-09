@@ -7,8 +7,8 @@
     <ProjectGuid>{AE57A857-FA4C-4984-BE55-39A66147053F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DurakLib</RootNamespace>
-    <AssemblyName>DurakLib</AssemblyName>
+    <RootNamespace>DurakGameLib</RootNamespace>
+    <AssemblyName>DurakGameLib</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,7 +47,7 @@
     <Compile Include="Attacker.cs" />
     <Compile Include="CardsPlayed.cs" />
     <Compile Include="Defender.cs" />
-    <Compile Include="DurakDeck.cs" />
+    <Compile Include="Talon.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

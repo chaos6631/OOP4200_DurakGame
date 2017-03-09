@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +28,7 @@ namespace DurakGameLib
 
         #region INSTANCE MEMBERS
         private Dictionary<string, Player> players;
-        private Deck gameDeck;
+        private Talon gameDeck;
 
 
         #endregion
@@ -47,23 +49,7 @@ namespace DurakGameLib
                 players = value;
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Deck GameDeck
-        {
-            get
-            {
-                return gameDeck;
-            }
-
-            set
-            {
-                gameDeck = value;
-            }
-        }
-
+        
 
         #endregion
 
@@ -79,21 +65,34 @@ namespace DurakGameLib
         public void StartGame(string playerName)
         {
             //// Initialize Players
+            try
+            {
+                this.players.Add("Human", new Player(playerName));
+                this.players.Add("Computer", new Player("Computer"));
+
+                //// Get choice of deck size from user
+
+
+                //// Initialize Deck and Deal cards
+                this.gameDeck = new Talon();
+
+                //// Set deck to required size
+                this.gameDeck.SetDeckSize(deckSize);
+
+
+
+                //// 
+
+                //// Decide which player goes first
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
             
-            this.players.Add("Human", new Player(playerName));
-            this.players.Add("Computer", new Player("Computer"));
-
-            //// Get choice of deck size from user
-
-
-            //// Initialize Deck and Deal cards
-            this.gameDeck = new Deck();
-
-
-
-            //// 
-
-            //// Decide which player goes first
 
 
 

@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 namespace Ch13CardLib
 {
     public enum Rank
-    {
-        Ace = 1,
-        Deuce,
+    {        
+        Deuce = 2,
         Three,
         Four,
         Five,
@@ -21,5 +20,6 @@ namespace Ch13CardLib
         Jack,
         Queen,
         King,
+        Ace,
     }
 }

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*  Cards.cs 
+ *  Description - A collection of Card objects, inherits from Collection class List
+ *                and inplements the ICloneable interface.
+ *  Author  : Chris Calder     
+ *  Version : 1.0    
+ *  Since   : 1.0 , Feb 2017
+ *  
+ */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;

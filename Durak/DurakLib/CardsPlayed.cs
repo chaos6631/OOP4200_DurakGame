@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ch13CardLib;
 
-namespace DurakLib
+namespace DurakGameLib
 {
     class CardsPlayed : Cards
     {
