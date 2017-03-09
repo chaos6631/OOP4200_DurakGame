@@ -73,6 +73,35 @@ namespace DurakGameLib
 
         #region METHODS
 
+        /// <summary>
+        /// Plays a card from the players hand
+        /// </summary>
+        /// <param name="card"></param>
+        public void PlayCard(Card card)
+        {
+            playerHand.Remove(card); // Removes the card played from the players hand
+        }
+
+        /// <summary>
+        /// Picks up cards and adds them to the players hand
+        /// </summary>
+        /// <param name="cards"></param>
+        public void PickUpCards(Cards cards)
+        {
+            foreach (Card card in cards) // For each card being picked up
+            {
+                playerHand.Add(card); // Add each to the players hand
+            }
+        }
+
+        /// <summary>
+        /// Takes a card from the deck as a parameter and adds it to the deck
+        /// </summary>
+        /// <param name="card"></param>
+        public void TakeFromDeck(Card card)
+        {
+            playerHand.Add(card); // Adds the card from the deck to the players hand   
+        }
         #endregion
     }
 }
