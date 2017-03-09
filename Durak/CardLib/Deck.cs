@@ -9,7 +9,7 @@ namespace Ch13CardLib
     public class Deck : ICloneable
     {
         #region MEMBERS AND PROPERTIES
-        private Cards cards = new Cards();
+        protected Cards cards = new Cards();
         #endregion
 
         #region EVENT HANDLERS
@@ -18,6 +18,34 @@ namespace Ch13CardLib
 
 
         #region CONSTRUCTORS
+
+
+        /// <summary>
+        /// Default Constructor : Sets deck to the standard 52 cards
+        /// </summary>
+        public Deck()
+        {
+
+            for (int suitVal = 0; suitVal < 4; suitVal++)
+            {
+                for (int rankVal = 1; rankVal < 14; rankVal++)
+                {
+                    cards.Add(new Card((Suit)suitVal, (Rank)rankVal));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Constructor : Creates a deck with a specified number of cards 
+        /// </summary>
+        /// <param name="deckSize">Size of deck</param>
+        /// <param name="minRank">Minimum rank in deck</param>
+        /// <param name="maxRank">Maximum rank in deck</param>
+        public Deck(int deckSize, int minRank, int maxRank)
+        {
+
+        }
+
         /// <summary>
         /// Constructor used for cloning
         /// </summary>
@@ -27,20 +55,6 @@ namespace Ch13CardLib
             cards = newCards;
         }
        
-        /// <summary>
-        /// Default Constructor
-        /// </summary>
-        public Deck()
-        {
-            
-            for (int suitVal = 0; suitVal < 4; suitVal++)
-            {
-                for (int rankVal = 1; rankVal < 14; rankVal++)
-                {
-                    cards.Add(new Card((Suit)suitVal, (Rank)rankVal));
-                }
-            }
-        }
 
         /// <summary>
         /// Nondefault constructor. Allows aces to be set high.
