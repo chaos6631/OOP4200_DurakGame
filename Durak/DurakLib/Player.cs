@@ -50,7 +50,7 @@ namespace DurakGameLib
         }
 
         /// <summary>
-        /// 
+        /// Paramaterized constructor for player, takes playerName
         /// </summary>
         /// <param name="playerName"></param>
         public Player(string playerName)
