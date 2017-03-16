@@ -21,13 +21,16 @@ namespace DurakGameLib
         #region CONSTRUCTORS
         public Game()
         {
-            this.players = new Dictionary<string, Player>();
+            //this.players = new Dictionary<string, Player>();
+            
         }
 
         #endregion
 
         #region INSTANCE MEMBERS
-        private Dictionary<string, Player> players;
+        //private Dictionary<string, Player> players;
+        private Player human;
+        private Player computer;
         private Talon gameDeck;
 
 
@@ -57,7 +60,14 @@ namespace DurakGameLib
         /// <summary>
         /// Commence the next round of the current game
         /// </summary>
-        public void PlayNextRound() {  }
+        public void PlayNextRound()
+        {
+            //// Deal cards to players
+
+            //// Decide which player goes first
+            //if(human)
+            
+        }
 
         /// <summary>
         /// Start the current game, string should be validated in the GUI
@@ -71,19 +81,17 @@ namespace DurakGameLib
                 this.players.Add("Computer", new Player("Computer"));
 
                 //// Get choice of deck size from user
-
+                int deckSize = 36;              // should come from event
 
                 //// Initialize Deck and Deal cards
                 this.gameDeck = new Talon();
 
-                //// Set deck to required size
+                //// Set deck to required size                
                 this.gameDeck.SetDeckSize(deckSize);
 
 
 
-                //// 
-
-                //// Decide which player goes first
+                
             }
             catch (Exception)
             {
