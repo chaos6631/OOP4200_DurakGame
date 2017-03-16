@@ -29,31 +29,49 @@ namespace DurakGameLib
 
         #region INSTANCE MEMBERS
         //private Dictionary<string, Player> players;
-        private Player human;
-        private Player computer;
+        private Player humanPlayer;        
+        private Player computerPlayer;
         private Talon gameDeck;
+
+        
+        
 
 
         #endregion
 
         #region ACCESSORS & MUTATORS
         /// <summary>
-        /// 
+        /// Public property for humanPlayer
         /// </summary>
-        public Dictionary<string, Player> Players
+        public Player HumanPlayer
         {
             get
             {
-                return players;
+                return humanPlayer;
             }
 
             set
             {
-                players = value;
+                humanPlayer = value;
             }
         }
-        
 
+        /// <summary>
+        /// Public property for computerPlayer
+        /// </summary>   
+        public Player ComputerPlayer
+        {
+            get
+            {
+                return computerPlayer;
+            }
+
+            set
+            {
+                computerPlayer = value;
+            }
+        }
+                
         #endregion
 
         #region METHODS
