@@ -66,6 +66,7 @@ namespace DurakGameLib
                     cards.Add(new Card(suitVal, rankVal));
                 }
             }
-        }        
+        }
+              
     }
 }

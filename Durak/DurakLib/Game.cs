@@ -14,7 +14,7 @@ namespace DurakGameLib
         #region CLASS MEMBERS
         // Max players
         // Min players
-        static int[] DECK_SIZES = { 20, 36, 52};        // Deck sizes
+        static int[] DECK_SIZES = { 20, 36, 52 };        // Deck sizes
         static int INITIAL_PLAYER_CARD_COUNT = 6;       // Initial player card amount
         #endregion
 
@@ -22,20 +22,17 @@ namespace DurakGameLib
         public Game()
         {
             //this.players = new Dictionary<string, Player>();
-            
+
         }
 
         #endregion
 
         #region INSTANCE MEMBERS
         //private Dictionary<string, Player> players;
-        private Player humanPlayer;        
+        private Player humanPlayer;
         private Player computerPlayer;
         private Talon gameDeck;
-
-        
-        
-
+        private Card gameTrumpCard;
 
         #endregion
 
@@ -71,20 +68,63 @@ namespace DurakGameLib
                 computerPlayer = value;
             }
         }
-                
+
+        /// <summary>
+        /// Public property for gameTrumpCard
+        /// </summary>
+        public Card GameTrumpCard
+        {
+            get
+            {
+                return gameTrumpCard;
+            }
+
+            set
+            {
+                gameTrumpCard = value;
+            }
+        }
+
         #endregion
 
         #region METHODS
         /// <summary>
         /// Commence the next round of the current game
+        ///  - Should be called when PlayRound_event
         /// </summary>
         public void PlayNextRound()
         {
             //// Deal cards to players
+            for (int i = 1; i <= INITIAL_PLAYER_CARD_COUNT; i++)
+            {
+                humanPlayer.TakeFromDeck(gameDeck.GetCard());
+                computerPlayer.TakeFromDeck(gameDeck.GetCard());
+            }
+            //// Set trump card
+            gameTrumpCard = gameDeck.GetCard();
 
             //// Decide which player goes first
-            //if(human)
-            
+            if (HumanIsAttacker())
+            {
+                // Get card(s) played by player
+                    // If computer 
+            }
+            else
+            {               
+                // Get card(s) played by computer
+            }
+
+        }
+
+        /// <summary>
+        /// Individual players actions
+        /// </summary>
+        public void PlayerRound()
+        {
+            // select cards to play
+            // play cards
+            // opposite player chooses cards to play
+                // if opposite player chooses to pass, opposite player picks up cards
         }
 
         /// <summary>
@@ -94,10 +134,7 @@ namespace DurakGameLib
         {
             //// Initialize Players
             try
-            {
-                this.players.Add("Human", new Player(playerName));
-                this.players.Add("Computer", new Player("Computer"));
-
+            {            
                 //// Get choice of deck size from user
                 int deckSize = 36;              // should come from event
 
@@ -106,28 +143,55 @@ namespace DurakGameLib
 
                 //// Set deck to required size                
                 this.gameDeck.SetDeckSize(deckSize);
-
-
-
-                
             }
             catch (Exception)
             {
-
                 throw;
-            }
-
-
-            
-
-
-
+            }            
         }
 
         /// <summary>
         /// End the current game
         /// </summary>
         public void EndGame() { }
+        
+        /// <summary>
+        /// Checks if the human player is the attacker
+        /// </summary>
+        /// <returns>True if human is attacker, false if not</returns>
+        public bool HumanIsAttacker()
+        {
+            bool humanGoesFirst = true;
+            if (humanPlayer.IsDurak == false && computerPlayer.IsDurak == false)
+            {
+                //// Player with lowest trump is the attacker                
+                foreach (Card humanCard in humanPlayer.PlayerHand)
+                {
+                    if (humanCard.suit == gameTrumpCard.suit)
+                    {
+                        foreach (Card computerCard in computerPlayer.PlayerHand)
+                        {
+                            if (computerCard.suit == gameTrumpCard.suit
+                                && computerCard.rank < humanCard.rank)
+                            {
+                                humanGoesFirst = false;
+                            }
+                        }
+                    }
+                }
+            }
+            else if (computerPlayer.IsDurak == false)
+            {
+                //// human plays as attacker
+                humanGoesFirst = true;
+            }
+            else
+            {
+                //// computer plays as attacker
+                humanGoesFirst = false;
+            }
+            return humanGoesFirst;
+        }
         #endregion
     }
 }

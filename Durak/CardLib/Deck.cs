@@ -96,16 +96,22 @@ namespace Ch13CardLib
             return newDeck;
         }
 
+        public Card GetCard()
+        {
+            int cardCount = cards.Count;
+            return this.GetCard(cardCount);
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="cardNum"></param>
         /// <returns></returns>
-        public Card GetCard(int cardNum)
+        protected Card GetCard(int cardNum)
         {
             if (cardNum >= 0 && cardNum <= 51)
             {
-                if ((cardNum == 51) && (LastCardDrawn != null))
+                if ((cardNum == 0) && (LastCardDrawn != null))
                     LastCardDrawn(this, EventArgs.Empty);
                 return cards[cardNum];
             }
