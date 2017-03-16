@@ -102,6 +102,51 @@ namespace DurakGameLib
         {
             playerHand.Add(card); // Adds the card from the deck to the players hand   
         }
+
+        /// <summary>
+        /// Getter & Setter for the player's name
+        /// </summary>
+        public string PlayerName
+        {
+            get { return playerName; }
+            set { playerName = value; }
+        }
+
+        /// <summary>
+        /// Getter & Setter for the player's hand
+        /// </summary>
+        public Cards PlayerHand
+        {
+            get { return playerHand; }
+            set { playerHand = value; }
+        }
+
+        /// <summary>
+        /// Getter & Setter for the status of durak, if they have lost
+        /// </summary>
+        public bool IsDurak
+        {
+            get { return IsDurak; }
+            set { isDurak = value; }
+        }
+
+        /// <summary>
+        /// Getter & Setter for the player's number of games won
+        /// </summary>
+        public int GamesWon
+        {
+            get { return gamesWon; }
+            set { gamesWon = value; }
+        }
+
+        /// <summary>
+        /// Getter & Setter for the player's number of hands won
+        /// </summary>
+        public int HandsWon
+        {
+            get { return handsWon; }
+            set { handsWon = value; }
+        }
         #endregion
     }
 }
