@@ -106,12 +106,11 @@ namespace DurakGameLib
             //// Decide which player goes first
             if (HumanIsAttacker())
             {
-                // Get card(s) played by player
-                    // If computer 
+                //// trigger human players select cards to play function
             }
             else
-            {               
-                // Get card(s) played by computer
+            {
+                //// trigger computer players play card function
             }
 
         }
