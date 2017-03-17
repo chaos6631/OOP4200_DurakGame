@@ -35,6 +35,7 @@ namespace DurakGameLib
         private string playerName;          // The players name
         private Cards playerHand;           // The players cards as a hand
         private bool isDurak;               // IS PLAYER THE DURAK?
+        private bool isAttacker;            // Is the player the attacker 
         private int gamesWon;               // The number of games won by this player
         private int handsWon;               // The number of hands won by this player
 
@@ -153,6 +154,15 @@ namespace DurakGameLib
         {
             get { return handsWon; } // Returns the number of hands won by the player
             set { handsWon = value; } // Sets the number of hands won by the player
+        }
+
+        /// <summary>
+        /// Getter & Setter for the wether the player is the attacker
+        /// </summary>
+        public bool IsAttacker
+        {
+            get { return isAttacker; }
+            set { isAttacker = value; }
         }
         #endregion
     }

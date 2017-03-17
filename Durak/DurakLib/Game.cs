@@ -94,17 +94,10 @@ namespace DurakGameLib
         /// </summary>
         public void PlayNextRound()
         {
-            //// Deal cards to players
-            for (int i = 1; i <= INITIAL_PLAYER_CARD_COUNT; i++)
-            {
-                humanPlayer.TakeFromDeck(gameDeck.GetCard());
-                computerPlayer.TakeFromDeck(gameDeck.GetCard());
-            }
-            //// Set trump card
-            gameTrumpCard = gameDeck.GetCard();
+            
 
             //// Decide which player goes first
-            if (HumanIsAttacker())
+            if (IsHumanAttacker())
             {
                 //// trigger human players select cards to play function
             }
@@ -116,7 +109,8 @@ namespace DurakGameLib
         }
 
         /// <summary>
-        /// Individual players actions
+        /// 
+        /// NOT SURE IF THIS WILL BE REQUIRED Individual players actions
         /// </summary>
         public void PlayerRound()
         {
@@ -142,6 +136,11 @@ namespace DurakGameLib
 
                 //// Set deck to required size                
                 this.gameDeck.SetDeckSize(deckSize);
+
+                //// Deal cards to players
+                
+                //// Set trump card
+                gameTrumpCard = gameDeck.GetCard();
             }
             catch (Exception)
             {
@@ -155,13 +154,15 @@ namespace DurakGameLib
         public void EndGame() { }
         
         /// <summary>
-        /// Checks if the human player is the attacker
+        /// IsHumanAttacker
+        /// - First checks to see if it is initial round and then decides who attacker is
+        ///   based on lowest trump card
+        /// - If it isn't first round the attacker is decided based on who was attacker last
         /// </summary>
         /// <returns>True if human is attacker, false if not</returns>
-        public bool HumanIsAttacker()
-        {
-            bool humanGoesFirst = true;
-            if (humanPlayer.IsDurak == false && computerPlayer.IsDurak == false)
+        public bool IsHumanAttacker()
+        {            
+            if (humanPlayer.IsAttacker == false && computerPlayer.IsAttacker == false)
             {
                 //// Player with lowest trump is the attacker                
                 foreach (Card humanCard in humanPlayer.PlayerHand)
@@ -173,24 +174,53 @@ namespace DurakGameLib
                             if (computerCard.suit == gameTrumpCard.suit
                                 && computerCard.rank < humanCard.rank)
                             {
-                                humanGoesFirst = false;
+                                HumanPlayer.IsAttacker = true;                                
                             }
                         }
                     }
                 }
             }
-            else if (computerPlayer.IsDurak == false)
+            else if (computerPlayer.IsAttacker == true)                            
+                HumanPlayer.IsAttacker = true;                  // human plays as attacker
+            else
+                HumanPlayer.IsAttacker = false;                 // computer plays as attacker
+
+            return HumanPlayer.IsAttacker;
+        }
+        
+        /// <summary>
+        /// Deals cards based on wether it is INITIAL DEAL or who is ATTACKER
+        /// </summary>
+        public void DealCards()
+        {
+            //// Check if it is initial deal
+            if (HumanPlayer.PlayerHand.Count == 0 && ComputerPlayer.PlayerHand.Count == 0)
             {
-                //// human plays as attacker
-                humanGoesFirst = true;
+                for (int i = 1; i <= INITIAL_PLAYER_CARD_COUNT; i++)
+                {
+                    humanPlayer.TakeFromDeck(gameDeck.GetCard());
+                    computerPlayer.TakeFromDeck(gameDeck.GetCard());
+                }
             }
             else
-            {
-                //// computer plays as attacker
-                humanGoesFirst = false;
+            {                         
+                //// Deal to attacker first
+                if (HumanPlayer.IsAttacker)
+                    for (int i = ComputerPlayer.PlayerHand.Count; i <= INITIAL_PLAYER_CARD_COUNT; i++)
+                    {
+                        ComputerPlayer.TakeFromDeck(gameDeck.GetCard());
+                    }
+                else
+                    for (int i = HumanPlayer.PlayerHand.Count; i <= INITIAL_PLAYER_CARD_COUNT; i++)
+                    {
+                        HumanPlayer.TakeFromDeck(gameDeck.GetCard());
+                    }
             }
-            return humanGoesFirst;
         }
+        
+        
+        
+        
         #endregion
     }
 }
