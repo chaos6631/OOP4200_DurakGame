@@ -47,6 +47,7 @@
     <Compile Include="Attacker.cs" />
     <Compile Include="CardsPlayed.cs" />
     <Compile Include="Defender.cs" />
+    <Compile Include="NameOutOfRangeException.cs" />
     <Compile Include="Talon.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Player.cs" />
