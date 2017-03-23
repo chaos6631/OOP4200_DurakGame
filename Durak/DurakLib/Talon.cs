@@ -41,7 +41,7 @@ namespace DurakGameLib
             //// If deck size is 52....minimum rank is 2
             else if (size == 52)
             {
-                this.CreateDeck(Rank.Deuce);
+                this.CreateDeck(Rank.Two);
             }
             //// else throw exception invalid argument
             else

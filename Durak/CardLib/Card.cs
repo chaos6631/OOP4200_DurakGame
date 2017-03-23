@@ -3,9 +3,15 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+/**Attribution
+ * Cards provided by
+ * Byron Knoll: http://code.google.com/p/vector-playing-cards/
+ */
 
 namespace Ch13CardLib
 {
@@ -22,7 +28,7 @@ namespace Ch13CardLib
         /// <summary>
         /// Trump suit to use if useTrumps is true.
         /// </summary>
-        public static Suit trump = Suit.Club;
+        public static Suit trump = Suit.Clubs;
 
         /// <summary>
         /// Flag that determines whether aces are higher than kings or lower
@@ -34,9 +40,36 @@ namespace Ch13CardLib
 
         #region MEMBERS AND PROPERTIES
 
-        public readonly Suit suit;
-        public readonly Rank rank;
-        
+        /// <summary>
+        /// Get/Set Suit
+        /// </summary>
+        protected Suit mySuit;
+        public Suit Suit
+        {
+            get { return mySuit; }
+            set { mySuit = value; }
+        }
+
+        /// <summary>
+        /// Get/Set Rank
+        /// </summary>
+        protected Rank myRank;
+        public Rank Rank
+        {
+            get { return myRank; }
+            set { myRank = value; }
+        }
+
+        /// <summary>
+        /// Flag that determines if the card is face-up or down
+        /// </summary>
+        protected bool faceUp = false;
+        public bool FaceUp
+        {
+            get { return faceUp; }
+            set { faceUp = value; }
+        }
+
         #endregion
 
         #region CONSTRUCTORS
@@ -48,14 +81,14 @@ namespace Ch13CardLib
         /// <param name="newRank"></param>
         public Card(Suit newSuit, Rank newRank)
         {
-            suit = newSuit;
-            rank = newRank;
+            mySuit = newSuit;
+            myRank = newRank;
         }
 
         /// <summary>
         /// Default Constructor
         /// </summary>
-        private Card()
+        public Card()
         {
         }
         
@@ -78,7 +111,34 @@ namespace Ch13CardLib
         /// <returns></returns>
         public override string ToString()
         {
-            return "The " + rank + " of " + suit + "s";
+            string cardString; // holds card name
+            //facing
+            if (faceUp)
+            {
+                //if joker
+                if (myRank == Rank.Joker)
+                {
+                    //Suit
+                    if (mySuit == Suit.Clubs || mySuit == Suit.Spades)
+                    {
+                        cardString = "Black Joker";
+                    }
+                    else
+                    {
+                        cardString = "Red Joker";
+                    }
+                }
+                //Not Joker
+                else
+                {
+                    cardString = myRank.ToString() + " of " + mySuit.ToString();
+                }
+            }
+            else //facedown
+            {
+                cardString = "Face Down";
+            }
+            return cardString;
         }
 
         /// <summary>
@@ -89,7 +149,7 @@ namespace Ch13CardLib
         /// <returns></returns>
         public static bool operator ==(Card card1, Card card2)
         {
-            return (card1.suit == card2.suit) && (card1.rank == card2.rank);
+            return (card1.Suit == card2.Suit) && (card1.Rank == card2.Rank);
         }
 
         /// <summary>
@@ -119,7 +179,7 @@ namespace Ch13CardLib
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return 13 * (int)suit + (int)rank;
+            return 13 * (int)mySuit + (int)myRank;
         }
 
         /// <summary>
@@ -130,33 +190,33 @@ namespace Ch13CardLib
         /// <returns></returns>
         public static bool operator >(Card card1, Card card2)
         {
-            if (card1.suit == card2.suit)
+            if (card1.Suit == card2.Suit)
             {
                 if (isAceHigh)
                 {
-                    if (card1.rank == Rank.Ace)
+                    if (card1.Rank == Rank.Ace)
                     {
-                        if (card2.rank == Rank.Ace)
+                        if (card2.Rank == Rank.Ace)
                             return false;
                         else
                             return true;
                     }
                     else
                     {
-                        if (card2.rank == Rank.Ace)
+                        if (card2.Rank == Rank.Ace)
                             return false;
                         else
-                            return (card1.rank > card2.rank);
+                            return (card1.Rank > card2.Rank);
                     }
                 }
                 else
                 {
-                    return (card1.rank > card2.rank);
+                    return (card1.Rank > card2.Rank);
                 }
             }
             else // If suits are not equal check if suit is trump
             {
-                if (useTrumps && (card2.suit == Card.trump))
+                if (useTrumps && (card2.Suit == Card.trump))
                     return false;
                 else
                     return true;
@@ -182,30 +242,30 @@ namespace Ch13CardLib
         /// <returns></returns>
         public static bool operator >=(Card card1, Card card2)
         {
-            if (card1.suit == card2.suit)
+            if (card1.Suit == card2.Suit)
             {
                 if (isAceHigh)
                 {
-                    if (card1.rank == Rank.Ace)
+                    if (card1.Rank == Rank.Ace)
                     {
                         return true;
                     }
                     else
                     {
-                        if (card2.rank == Rank.Ace)
+                        if (card2.Rank == Rank.Ace)
                             return false;
                         else
-                            return (card1.rank >= card2.rank);
+                            return (card1.Rank >= card2.Rank);
                     }
                 }
                 else
                 {
-                    return (card1.rank >= card2.rank);
+                    return (card1.Rank >= card2.Rank);
                 }
             }
             else
             {
-                if (useTrumps && (card2.suit == Card.trump))
+                if (useTrumps && (card2.Suit == Card.trump))
                     return false;
                 else
                     return true;
@@ -221,6 +281,49 @@ namespace Ch13CardLib
         public static bool operator <=(Card card1, Card card2)
         {
             return !(card1 > card2);
+        }
+
+        /// <summary>
+        /// Gets the appropriate card image and returns it
+        /// </summary>
+        /// <returns></returns>
+        public Image GetCardImage()
+        {
+            string imageName; // name of the image resource
+            Image cardImage; //holds image
+
+            //facedown
+            if (!faceUp)
+            {
+                imageName = "Back";
+            }
+            else if (myRank == Rank.Joker) // joker
+            {
+                if (mySuit == Suit.Clubs || mySuit == Suit.Spades)
+                {
+                    imageName = "Black_Joker";
+                }
+                else
+                {
+                    imageName = "Red_Joker";
+                }
+            }
+            else // faceup non-joker
+            {
+                imageName = mySuit.ToString() + "_" + myRank.ToString();
+            }
+            //Set the image to the appropriate image
+            cardImage = Properties.Resources.ResourceManager.GetObject(imageName) as Image;
+            return cardImage;
+        }
+
+        //DebugString
+        public string DebugString()
+        {
+            string cardState = (string)(myRank.ToString() + " of " + mySuit.ToString()).PadLeft(20);
+            cardState += (string)((FaceUp) ? "(Face Up)" : "(Face Down)").PadLeft(12);
+            //cardState += ((altValue != null) ? "/" + altValue.ToString() : "");
+            return cardState;
         }
 
         #endregion

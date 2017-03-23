@@ -8,3 +8,10 @@ D:\School\C# Programming Projects\OOP4200_DurakGame\Durak\CardLib\bin\Debug\Ch11
 D:\School\C# Programming Projects\OOP4200_DurakGame\Durak\CardLib\obj\Debug\Ch13CardLib.csprojResolveAssemblyReference.cache
 D:\School\C# Programming Projects\OOP4200_DurakGame\Durak\CardLib\obj\Debug\Ch11CardLib.dll
 D:\School\C# Programming Projects\OOP4200_DurakGame\Durak\CardLib\obj\Debug\Ch11CardLib.pdb
+C:\Users\MattH_000\GitDurak\Durak\CardLib\obj\Debug\Ch13CardLib.csprojResolveAssemblyReference.cache
+C:\Users\MattH_000\GitDurak\Durak\CardLib\obj\Debug\Ch13CardLib.csproj.GenerateResource.Cache
+C:\Users\MattH_000\GitDurak\Durak\CardLib\bin\Debug\Ch13CardLib.dll
+C:\Users\MattH_000\GitDurak\Durak\CardLib\bin\Debug\Ch13CardLib.pdb
+C:\Users\MattH_000\GitDurak\Durak\CardLib\obj\Debug\Ch13CardLib.Properties.Resources.resources
+C:\Users\MattH_000\GitDurak\Durak\CardLib\obj\Debug\Ch13CardLib.dll
+C:\Users\MattH_000\GitDurak\Durak\CardLib\obj\Debug\Ch13CardLib.pdb

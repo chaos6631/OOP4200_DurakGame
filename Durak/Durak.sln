@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ch13CardLib", "CardLib\Ch13CardLib.csproj", "{33581AFC-032D-4198-8C0E-35941B37E45E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DurakGameLib", "DurakLib\DurakGameLib.csproj", "{AE57A857-FA4C-4984-BE55-39A66147053F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DurakGameClient", "DurakGameClient\DurakGameClient.csproj", "{4D7A001F-C203-4F97-9520-3171F98141EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardUserControl", "WindowsFormsControlLibrary1\CardUserControl.csproj", "{85EC7429-21D1-4ABF-AD3D-DDB9858CA1AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DurakGuiTester", "DurakGuiTester\DurakGuiTester.csproj", "{32D287DD-A6A1-4052-A62E-FB7A8174E91A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{4D7A001F-C203-4F97-9520-3171F98141EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D7A001F-C203-4F97-9520-3171F98141EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D7A001F-C203-4F97-9520-3171F98141EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85EC7429-21D1-4ABF-AD3D-DDB9858CA1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85EC7429-21D1-4ABF-AD3D-DDB9858CA1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85EC7429-21D1-4ABF-AD3D-DDB9858CA1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85EC7429-21D1-4ABF-AD3D-DDB9858CA1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D287DD-A6A1-4052-A62E-FB7A8174E91A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D287DD-A6A1-4052-A62E-FB7A8174E91A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D287DD-A6A1-4052-A62E-FB7A8174E91A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D287DD-A6A1-4052-A62E-FB7A8174E91A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

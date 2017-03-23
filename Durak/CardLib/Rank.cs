@@ -8,7 +8,7 @@ namespace Ch13CardLib
 {
     public enum Rank
     {        
-        Deuce = 2,
+        Two = 2,
         Three,
         Four,
         Five,
@@ -21,5 +21,6 @@ namespace Ch13CardLib
         Queen,
         King,
         Ace,
+        Joker
     }
 }
