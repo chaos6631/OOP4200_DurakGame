@@ -14,11 +14,16 @@ namespace DurakGameLib
         #endregion
 
         #region CONSTRUCTORS
-
+        private Cards aiplayhand;
         #endregion
 
         #region INSTANCE MEMBERS
+        public AIPlayer()
+        {
 
+            aiplayhand = new Cards();   // The ia player cards as a hand
+
+        }
         #endregion
 
         #region METHODS
