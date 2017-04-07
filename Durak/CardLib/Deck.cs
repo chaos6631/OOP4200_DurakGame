@@ -99,7 +99,7 @@ namespace Ch13CardLib
         public Card GetCard()
         {
             int cardCount = cards.Count;
-            return this.GetCard(cardCount);
+            return this.GetCard(cardCount-1); // altered with -1 for testing purposes
         }
 
         /// <summary>

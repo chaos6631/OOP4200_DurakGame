@@ -9,7 +9,8 @@ using Ch13CardLib;
 
 namespace DurakGameLib
 {
-    class Game
+    //Temp changed to public, Matt , april 6
+    public class Game
     {
         #region CLASS MEMBERS
         // Max players
@@ -23,6 +24,11 @@ namespace DurakGameLib
         {
             //this.players = new Dictionary<string, Player>();
 
+        }
+        public Game(Player p1, Player p2)
+        {
+            humanPlayer = p1;
+            computerPlayer = p2;
         }
 
         #endregion
@@ -123,14 +129,12 @@ namespace DurakGameLib
         /// <summary>
         /// Start the current game, string should be validated in the GUI
         /// </summary>
-        public void StartGame(string playerName)
+        public void StartGame(int deckSize = 20)//removed playername ,Added default and ability to take in decksize
         {
             //// Initialize Players
             try
             {            
-                //// Get choice of deck size from user
-                int deckSize = 36;              // should come from event
-
+               
                 //// Initialize Deck and Deal cards
                 this.gameDeck = new Talon();
 
@@ -167,12 +171,12 @@ namespace DurakGameLib
                 //// Player with lowest trump is the attacker                
                 foreach (Card humanCard in humanPlayer.PlayerHand)
                 {
-                    if (humanCard.suit == gameTrumpCard.suit)
+                    if (humanCard.Suit == gameTrumpCard.Suit)
                     {
                         foreach (Card computerCard in computerPlayer.PlayerHand)
                         {
-                            if (computerCard.suit == gameTrumpCard.suit
-                                && computerCard.rank < humanCard.rank)
+                            if (computerCard.Suit == gameTrumpCard.Suit
+                                && computerCard.Rank < humanCard.Rank)
                             {
                                 HumanPlayer.IsAttacker = true;                                
                             }
